@@ -1,0 +1,44 @@
+
+
+<html>
+<body>
+    <h1>Iris Species Classification</h1>
+<div>
+
+Iris is a family of flowers containing several species such as the iris.versicolor, iris.setosa, and iris.virginica. 
+The differnt species can be classified considering length and width of petals and sepals.
+
+<div class="ui small image">
+  <img src="{{url_for('static', filename='iris1.png')}}" alt="Iris Pic">
+</div>
+
+Petals & Sepals for Iris setosa, Iris versicolor, and Iris virginica (Sources: 1, 2, 3, Licenses: Public Domain, CC BY-SA 3.0 & CC BY-SA 2.0)
+<br>
+
+This site will help you to identify the correct species. The only thing you need to do is to enter length and width of petals and sepals. 
+<br>
+
+  <form class="ui form" action="/predict" method="POST">
+    <div class="field">
+      <label for="seplen">Sepal Length</label>
+      <input type="number" step="0.01" id="seplen" name="seplen" placeholder="Search...">
+    </div>
+    <div class="field">
+      <label>Sepal Width</label>
+      <input type="number" step="0.01" id="sepwid" name="sepwid" placeholder="Search...">
+    </div>
+    <div class="field">
+      <label for="seplen">Petal Length</label>
+      <input type="number" step="0.01" id="petlen" name="petlen" placeholder="Search...">
+    </div>
+    <div class="field">
+      <label>Petal Width</label>
+      <input type="number" step="0.01" id="petwid" name="petwid" placeholder="Search...">
+    </div>
+
+    <button class="ui button" type="submit">Submit</button>
+  </form>
+
+</div>
+</body>
+</html>
