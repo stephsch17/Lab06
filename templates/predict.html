@@ -1,6 +1,45 @@
 <!doctype html>
 <html>
-   <body>
-       <h1> {{ prediction }}</h1>
-   </body>
+<meta charset="UTF-8">
+<title>Iris Species Classification</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<body>
+
+<div class="ui container", style="margin-top:50px">
+
+  <h1>Iris Species Prediction</h1>
+    <div class="row justify-content-md-center">
+       <div class="ui small image", style="text-align: center">
+            {% if predictionStr == "0" %}
+
+                <img src="{{url_for('static', filename='iris_setosa.jpg')}}" class="img-thumbnail" />
+                <p> Prediction is Iris Setosa </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <div class="ui small image", style="text-align: center">
+            {% if predictionStr == "1" %}
+
+                <img src="{{url_for('static', filename='iris_versicolor.jpg')}}" class="img-thumbnail" />
+                <p> Prediction is Iris Versicolor </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <div class="ui small image", style="text-align: center">
+            {% if predictionStr == "2" %}
+
+                <img src="{{url_for('static', filename='iris_virginica.jpg')}}" class="img-thumbnail" />
+                <p> Prediction is Iris Virginica </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+</body>
 </html>
