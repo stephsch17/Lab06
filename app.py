@@ -28,7 +28,9 @@ def home_endpoint():
     return flask.render_template("index.html")
 
 def ValuePredictor(to_predict_list):
-    #data = request.get_json()  # Get data posted as a json
+    #data = request.get_json() 
+    
+    # Get data posted as a json
     #data = np.array(data)[np.newaxis, :]  # converts shape from (4,) to (1, 4)
     #prediction = model.predict(data)  # runs globally loaded model on the data
     #return str(prediction[0])
