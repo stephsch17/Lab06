@@ -3,9 +3,9 @@ Serving a simple machine learning model as a webservice using [flask](http://fla
 
 ## Getting Started
 1.) Use Model_training.ipynb to train a model on the iris dataset and generate a pickled model file (iris_trained_model.pkl)
-2.) Use app.py to wrap the inference logic in a flask server to serve the model as a REST webservice:
-3.) Execute the command python app.py to run the flask app.
-4.) Go to the browser and hit the url 0.0.0.0:5000 to get a message Hello World! displayed. 
-5.) To deploy the machine learning model on Heroku, create first a heroku account.
-6.) Login to Heroku
-7.) Create a heroku app and connect to the GIT repository
+3.) Use app.py to wrap the inference logic in a flask server to serve the model as a REST webservice:
+4.) Execute the command python app.py to run the flask app.
+5.) Go to the browser and hit the url 0.0.0.0:5000 to get a message Hello World! displayed. 
+6.) To deploy the machine learning model on Heroku, create first a heroku account.
+7.) Login to Heroku
+8.) Create a heroku app and connect to the GIT repository
