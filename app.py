@@ -1,19 +1,14 @@
 # Serve model as a flask application
-
 import pickle
 import numpy as np
 import flask
 from flask import Flask, request, render_template
 import os
 
-model = None
 app = Flask(__name__)
 
 
 def load_model():
-    # model is declared as global variable
-    # and can be access inside and outside of the function
-    global model
     # path to pickle file
     script_dir = os.path.dirname(__file__)
     fileName = 'iris_trained_model.pkl'
@@ -21,6 +16,7 @@ def load_model():
     # load model from pickle file
     with open(path, 'rb') as f:
         model = pickle.load(f)
+    return model
 
 @app.route('/')
 @app.route('/index')
@@ -32,7 +28,7 @@ def predict_value(prediction_input):
     # Create vector
     to_predict = np.array(prediction_input).reshape(1,4)
     # load model
-    load_model()
+    model = load_model()
     # Make prediction
     result = model.predict(to_predict)
     return result
