@@ -12,16 +12,16 @@ app = Flask(__name__)
 
 def load_model():
     # model is declared as global variable
-    # and can be access inside and outside of the function
     global model
+    # and can be access inside and outside of the function
     # path to pickle file
-    script_dir = os.path.dirname(__file__)
+    # script_dir = os.path.dirname(__file__)
     fileName = 'iris_trained_model.pkl'
-    path = script_dir + '/' + fileName
+    # path = script_dir + '/' + fileName
     # load model from pickle file
+    path = os.getcwd() + "/" + fileName
     with open(path, 'rb') as f:
         model = pickle.load(f)
-
 
 @app.route('/')
 @app.route('/index')
