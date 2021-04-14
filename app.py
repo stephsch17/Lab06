@@ -12,14 +12,13 @@ app = Flask(__name__)
 
 def load_model():
     # model is declared as global variable
-    global model
     # and can be access inside and outside of the function
+    global model
     # path to pickle file
     script_dir = os.path.dirname(__file__)
     fileName = 'iris_trained_model.pkl'
     path = script_dir + "/" + fileName
     # load model from pickle file
-    # path = os.getcwd() + "/" + fileName
     with open(path, 'rb') as f:
         model = pickle.load(f)
 
@@ -32,10 +31,9 @@ def home_endpoint():
 def predict_value(prediction_input):
     # Create vector
     to_predict = np.array(prediction_input).reshape(1,4)
-    # Make prediction
-    print(model)
-    # load model at the beginning once only
+    # load model
     load_model()
+    # Make prediction
     result = model.predict(to_predict)
     return result
 
