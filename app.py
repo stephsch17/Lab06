@@ -8,12 +8,11 @@ import os
 app = Flask(__name__)
 
 
+# Load model from pickle file
 def load_model():
-    # path to pickle file
     script_dir = os.path.dirname(__file__)
     fileName = 'iris_trained_model.pkl'
     path = script_dir + "/" + fileName
-    # load model from pickle file
     with open(path, 'rb') as f:
         model = pickle.load(f)
     return model
@@ -21,10 +20,9 @@ def load_model():
 @app.route('/')
 @app.route('/index')
 def home_endpoint():
-    # Observations can be entered in index.html
     return flask.render_template("index.html")
 
- # Create input vector, load model, and make prediction
+# Create input vector, load model, and make prediction
 def predict_value(prediction_input):
     to_predict = np.array(prediction_input).reshape(1,4)
     model = load_model()
