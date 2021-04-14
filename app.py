@@ -33,6 +33,7 @@ def predict_value(prediction_input):
     # Create vector
     to_predict = np.array(prediction_input).reshape(1,4)
     # Make prediction
+    print(model)
     result = model.predict(to_predict)
     return result
 
