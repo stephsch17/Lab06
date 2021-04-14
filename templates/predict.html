@@ -11,7 +11,7 @@
   <h1>Iris Species Prediction</h1>
     <div class="row justify-content-md-center">
        <div class="ui small image", style="text-align: center">
-            {% if predictionStr == "0" %}
+            {% if prediction_result == 0 %}
 
                 <img src="{{url_for('static', filename='iris_setosa.jpg')}}" class="img-thumbnail" />
                 <p> Prediction is Iris Setosa </p>
@@ -21,7 +21,7 @@
 
     <div class="row justify-content-md-center">
         <div class="ui small image", style="text-align: center">
-            {% if predictionStr == "1" %}
+            {% if prediction_result == 1 %}
 
                 <img src="{{url_for('static', filename='iris_versicolor.jpg')}}" class="img-thumbnail" />
                 <p> Prediction is Iris Versicolor </p>
@@ -31,7 +31,7 @@
 
     <div class="row justify-content-md-center">
         <div class="ui small image", style="text-align: center">
-            {% if predictionStr == "2" %}
+            {% if prediction_result == 2 %}
 
                 <img src="{{url_for('static', filename='iris_virginica.jpg')}}" class="img-thumbnail" />
                 <p> Prediction is Iris Virginica </p>

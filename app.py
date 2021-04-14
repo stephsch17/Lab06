@@ -11,50 +11,50 @@ app = Flask(__name__)
 
 
 def load_model():
+    # model is declared as global variable
+    # and can be access inside and outside of the function
     global model
-    # model variable refers to the global variable
+    # path to pickle file
     script_dir = os.path.dirname(__file__)
     fileName = 'iris_trained_model.pkl'
     path = script_dir + '/' + fileName
-    print(path)
+    # load model from pickle file
     with open(path, 'rb') as f:
         model = pickle.load(f)
-        print(model)
 
 
 @app.route('/')
 @app.route('/index')
 def home_endpoint():
-    print("hello world")
+    # Prediction result is shown in predict.html
     return flask.render_template("index.html")
 
-def ValuePredictor(to_predict_list):
-    #data = request.get_json()  # Get data posted as a json
-    #data = np.array(data)[np.newaxis, :]  # converts shape from (4,) to (1, 4)
-    #prediction = model.predict(data)  # runs globally loaded model on the data
-    #return str(prediction[0])
-    to_predict = np.array(to_predict_list).reshape(1,4)
-    load_model()  # load model at the beginning once only
-    #loaded_model = pickle.load(open(“model.pkl”,”rb”))
+def predict_value(prediction_input):
+    # Create vector
+    to_predict = np.array(prediction_input).reshape(1,4)
+    # Make prediction
     result = model.predict(to_predict)
-    return result[0]
+    return result
 
 @app.route('/predict', methods=['POST'])
 def get_prediction():
     # Works only for a single sample
-    print("hello world POST")
     if request.method == 'POST':
-        to_predict_list = request.form.to_dict()
-        print(to_predict_list)
-        to_predict_list = list(to_predict_list.values())
-        to_predict_list = list(map(float, to_predict_list))
-        result = ValuePredictor(to_predict_list)
-        prediction = str(result)
-        print(prediction)
-        return render_template("predict.html", predictionStr=prediction)
+        # Here we put what we receive from the form into a dictionary
+        # Example: {'seplen': '5', 'sepwid': '3', 'petlen': '3', 'petwid': '2'}
+        form_input = request.form.to_dict()
+        # Here we just extract the values
+        form_values = list(form_input.values())
+        # Here we bring them into the proper format (i.e., float)
+        prediction_input = list(map(float, form_values))
+        # Here we call function predict value
+        result = predict_value(prediction_input)
+        # Prediction result is shown in predict.html
+        return render_template("predict.html", prediction_result=result)
 
 
 if __name__ == '__main__':
-
+    # load model at the beginning once only
+    load_model()
     app.run(host='0.0.0.0', port=5000)
 
