@@ -21,15 +21,13 @@ def load_model():
 @app.route('/')
 @app.route('/index')
 def home_endpoint():
-    # Prediction result is shown in predict.html
+    # Observations can be entered in index.html
     return flask.render_template("index.html")
 
+ # Create input vector, load model, and make prediction
 def predict_value(prediction_input):
-    # Create vector
     to_predict = np.array(prediction_input).reshape(1,4)
-    # load model
     model = load_model()
-    # Make prediction
     result = model.predict(to_predict)
     return result
 
@@ -49,8 +47,6 @@ def get_prediction():
         # Prediction result is shown in predict.html
         return render_template("predict.html", prediction_result=result)
 
-
 if __name__ == '__main__':
-
     app.run(host='0.0.0.0', port=5000)
 
