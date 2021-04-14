@@ -17,7 +17,7 @@ def load_model():
     # path to pickle file
     script_dir = os.path.dirname(__file__)
     fileName = 'iris_trained_model.pkl'
-    path = script_dir + fileName
+    path = script_dir + "/" + fileName
     # load model from pickle file
     # path = os.getcwd() + "/" + fileName
     with open(path, 'rb') as f:
@@ -34,6 +34,8 @@ def predict_value(prediction_input):
     to_predict = np.array(prediction_input).reshape(1,4)
     # Make prediction
     print(model)
+    # load model at the beginning once only
+    load_model()
     result = model.predict(to_predict)
     return result
 
@@ -55,7 +57,6 @@ def get_prediction():
 
 
 if __name__ == '__main__':
-    # load model at the beginning once only
-    load_model()
+
     app.run(host='0.0.0.0', port=5000)
 
